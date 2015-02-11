@@ -1,7 +1,13 @@
 setwd("D:/R/ExData_Plotting1")
+
+## Getting full dataset
 mydata <-read.delim("D:/R/exdata1/household_power_consumption.txt",sep = ";",na.strings = "?")
+
+## Subsetting & Converting
 mydata2007 <- mydata[mydata$Date=="1/2/2007" |mydata$Date=="2/2/2007" ,]
 mydata2007$Date <- as.Date(mydata2007$Date,"%d/%m/%Y")
+
+## Plotting & Saving png file 
 png("plot1.png",480,480)
 hist(mydata2007$Global_active_power,
      col = "red",
@@ -9,4 +15,5 @@ hist(mydata2007$Global_active_power,
      xlab = "Globe Active Power(kilowatts)",
      ylim = c(0,1200))
 dev.off()
+
 setwd("..")
